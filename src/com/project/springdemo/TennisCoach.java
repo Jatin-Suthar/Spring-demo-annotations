@@ -1,10 +1,15 @@
 package com.project.springdemo;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+
 @Component //("thatSillyCoach")
+//@Scope("prototype")
 public class TennisCoach implements Coach {
 
 	@Autowired
@@ -43,4 +48,15 @@ public class TennisCoach implements Coach {
 //		System.out.println(">> TennisCoach: inside doSomeCrazyStuff method <<");
 //		fortuneService = theFortuneService;
 //	}
+	
+	//define my inti method
+	@PostConstruct
+	public void doMyStartUpStuff() {
+		System.out.println(">> TennisCoach: inside doMyStartUpStuff method <<");
+	}
+	//define my destroy method
+	@PreDestroy
+	public void doMyCleanUpStuff() {
+		System.out.println(">> TennisCoach: inside doMyCleanUpStuff method <<");
+	}
 }
